@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Clone repository') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
 
         stage('Build image') {
@@ -30,7 +32,7 @@ pipeline {
                 script {
                     // Use the docker object to push the image
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        app.push("${env.BUILD_NUMBER}")
+                        app.push("naveenr26/test:${env.BUILD_NUMBER}")
                     }
                 }
             }
