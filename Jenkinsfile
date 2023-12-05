@@ -6,7 +6,9 @@ node {
     }
 
     stage('Build image') {
-        app = docker.build("naveenr26/test:${env.BUILD_NUMBER}")
+    sh 'pwd'
+    sh 'ls -la'
+   app = docker.build("naveenr26/test:${env.BUILD_NUMBER}")
     }
 
     stage('Test image') {
